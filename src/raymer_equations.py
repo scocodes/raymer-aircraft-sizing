@@ -18,3 +18,20 @@ class RaymerEquations:
         self.W_electrical = 172.2*self.rvs.Kmc*self.rvs.Rkva**0.152*self.rvs.Nc**0.1*self.rvs.La**0.1*self.rvs.Ngen**0.091
         self.W_avionics = 2.117*self.rvs.Wuav**0.933
         self.W_engines = 2*self.rvs.Wen
+
+    def Weight_Calculation(self):
+        Weights = {"Wing":self.W_wing, "Horizontal Tail":self.W_horizontal_tail, "Vertical Tail":self.W_vertical_tail, 
+                "Fuselage":self.W_fuselage, "Main Landing Gear":self.W_main_landing_gear, "Nose Landing Gear":self.W_nose_landing_gear,
+                "Engine Weight": self.W_engines, "Engine Section":self.W_engine, "Fuel System":self.W_fuel_system, 
+                "Flight Controls":self.W_flight_controls, "Instruments":self.W_instruments, "Hydraulics":self.W_hydraulics, 
+                "Electrical":self.W_electrical, "Avionics":self.W_avionics}
+
+        #Design Weight Calculation
+
+        for name, value in Weights.items():
+            print(f"{name}: {value:.2f} lb")
+        print(" ")
+
+        oew =  sum(Weights.values())
+        return oew
+    
