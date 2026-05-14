@@ -3,11 +3,12 @@ class RaymerEquations:
     def __init__(self, raymer_variables):
         self.rvs = raymer_variables
     
+    def Weight_Calculation(self, Wto):
     #Raymer Calculations
-        self.W_wing = 0.0103*self.rvs.kdw*self.rvs.kvs*(self.rvs.Wto*self.rvs.Nz)**0.5*self.rvs.Sw**0.785*self.rvs.tc_naca6716**-0.4*(1+self.rvs.lambdaa)**0.05*np.cos(0)**-1*self.rvs.Scsw**0.04
-        self.W_horizontal_tail = 3.316*(1+(self.rvs.Fw/self.rvs.Bh))**-2*(self.rvs.Wto*self.rvs.Nz/1000)**0.26*self.rvs.Sht**0.806
-        self.W_vertical_tail = 0.452*self.rvs.Krht*(1+self.rvs.Ht/self.rvs.Hv)**0.5*(self.rvs.Wto*self.rvs.Nz)**0.488*self.rvs.Svt**0.718*self.rvs.M**0.341*self.rvs.Lt**-1*(1+self.rvs.Sr/self.rvs.Svt)**0.348*self.rvs.Avt**0.223*(1+self.rvs.lambdaa)**0.25*(np.cos(0))**-0.323
-        self.W_fuselage = 0.499*self.rvs.kdw*self.rvs.Wto**0.35*self.rvs.Nz**0.25*self.rvs.L*0.5*self.rvs.D**0.849*self.rvs.W**0.685
+        self.W_wing = 0.0103*self.rvs.kdw*self.rvs.kvs*(Wto*self.rvs.Nz)**0.5*self.rvs.Sw**0.785*self.rvs.tc_naca6716**-0.4*(1+self.rvs.lambdaa)**0.05*np.cos(0)**-1*self.rvs.Scsw**0.04
+        self.W_horizontal_tail = 3.316*(1+(self.rvs.Fw/self.rvs.Bh))**-2*(Wto*self.rvs.Nz/1000)**0.26*self.rvs.Sht**0.806
+        self.W_vertical_tail = 0.452*self.rvs.Krht*(1+self.rvs.Ht/self.rvs.Hv)**0.5*(Wto*self.rvs.Nz)**0.488*self.rvs.Svt**0.718*self.rvs.M**0.341*self.rvs.Lt**-1*(1+self.rvs.Sr/self.rvs.Svt)**0.348*self.rvs.Avt**0.223*(1+self.rvs.lambdaa)**0.25*(np.cos(0))**-0.323
+        self.W_fuselage = 0.499*self.rvs.kdw*Wto**0.35*self.rvs.Nz**0.25*self.rvs.L*0.5*self.rvs.D**0.849*self.rvs.W**0.685
         self.W_main_landing_gear = self.rvs.Kcb*self.rvs.Ktpg*(self.rvs.Wl*self.rvs.Nl)**0.25*self.rvs.Lm**0.973
         self.W_nose_landing_gear = (self.rvs.Wl/self.rvs.Nl)**0.290*self.rvs.Ln**0.5*self.rvs.Nnw**0.525
         self.W_engine = 0.01*self.rvs.Wen**0.717*self.rvs.Nen*self.rvs.Nz
@@ -19,7 +20,6 @@ class RaymerEquations:
         self.W_avionics = 2.117*self.rvs.Wuav**0.933
         self.W_engines = 2*self.rvs.Wen
 
-    def Weight_Calculation(self):
         Weights = {"Wing":self.W_wing, "Horizontal Tail":self.W_horizontal_tail, "Vertical Tail":self.W_vertical_tail, 
                 "Fuselage":self.W_fuselage, "Main Landing Gear":self.W_main_landing_gear, "Nose Landing Gear":self.W_nose_landing_gear,
                 "Engine Weight": self.W_engines, "Engine Section":self.W_engine, "Fuel System":self.W_fuel_system, 

@@ -1,17 +1,17 @@
 class Conversions:
 
 
-    def m2f(m):
+    def m2f(self, m):
         return m*3.28084
     #Nautical Miles to km
-    def nmtokm(nm):
+    def nmtokm(self, nm):
         return nm*1.852
     #Kilometres to Nautical Miles
-    def kmtonm(km):
+    def kmtonm(self, km):
         return km/1.852
     #Km/h to m/s
-    def kmhtoms(kmh):
+    def kmhtoms(self, kmh):
         return (kmh*1000)/3600
     #lb to Newton
-    def lbtoN(lb):
+    def lbtoN(self, lb):
         return lb*4.448

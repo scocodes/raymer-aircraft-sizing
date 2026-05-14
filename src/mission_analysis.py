@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 
 
 class MissionAnalysis:
-
+    
     def __init__(self, Wto, raymer_equations, data_import, raymer_variables, conversions):
         self.Wto = Wto
         self.reqs = raymer_equations
